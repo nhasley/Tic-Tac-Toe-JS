@@ -11,20 +11,21 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: pink;
 }
 
 section.board div:hover {
-  border-top-color: grey;
+  background-color: palevioletred;
 }
 
 section.board {
   display: grid;
-  grid-template-columns: repeat(7, 10vmin);
-  grid-template-rows: repeat(6, 10vmin);
+  grid-template-columns: repeat(3, 20vmin);
+  grid-template-rows: repeat(3, 20vmin);
   grid-gap: 1vmin;
 }
 
 section.board div {
-  border-radius: 50%;
-  border: 1px solid grey;
+  border: 1px solid black;
+  background: papayawhip;
 }
