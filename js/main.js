@@ -1,3 +1,54 @@
+var msg = document.getElementById("msg"),
+  sq = document.querySelectorAll(".sq"),
+  turn = 0;
+
+function winner() {
+  var b1 = document.getElementById("b1"),
+    b2 = document.getElementById("b2"),
+    b3 = document.getElementById("b3"),
+    b4 = document.getElementById("b4"),
+    b5 = document.getElementById("b5"),
+    b6 = document.getElementById("b6"),
+    b7 = document.getElementById("b7"),
+    b8 = document.getElementById("b8"),
+    b9 = document.getElementById("b9");
+
+  function winB(winner) {
+    if (b1 === b2 && b1 === b3) return winner(b1, b2, b3);
+
+    if (b4 === b5 && b4 === b6) return winner(b4, b5, b6);
+
+    if (b7 === b8 && b7 === b9) return winner(b7, b8, b9);
+
+    if (b1 === b4 && b1 === b7) return winner(b1, b4, b7);
+
+    if (b2 === b5 && b2 === b8) return winner(b2, b5, b8);
+
+    if (b3 === b6 && b3 === b9) return winner(b3, b6, b9);
+
+    if (b1 === b5 && b1 === b9) return winner(b1, b5, b9);
+
+    if (b3 === b5 && b3 === b7) return winner(b3, b5, b7);
+  }
+}
+
+for (var i = 0; i < sq.length; i++) {
+  sq[i].onclick = function() {
+    if (this.innerHTML !== "X" && this.innerHTML !== "O") {
+      if (turn % 2 === 0) {
+        this.innerHTML = "X";
+        msg.innerHTML = "O's Turn";
+        winner();
+        turn += 1;
+      } else {
+        this.innerHTML = "O";
+        msg.innerHTML = "X's Turn";
+        winner();
+        turn += 1;
+      }
+    }
+  };
+}
 // /*----- constants -----*/
 // const COLORS = {
 //   "0": "white",
@@ -66,7 +117,7 @@
 
 // function handleClick(evt) {
 //   // get index of column's marker clicked
-//   let idx = parseInt(evt.target.id.replace("col", ""));
+//   let idx = parseInt(evt.target.id.replace("sq", ""));
 //   // make sure the MARKER was clicked
 //   if (isNaN(idx) || winner) return;
 //   board[idx] = turn;
